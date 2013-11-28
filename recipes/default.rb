@@ -27,3 +27,16 @@ end
 package 'passenger' do
     action :upgrade if node[:passenger_nginx][:auto_upgrade]
 end
+
+template "/etc/nginx/conf.d/passenger.conf" do
+    source "passenger.conf.erb"
+    mode 0644
+    owner "root"
+    group "root"
+    notifies :reload, 'service[nginx]'
+end
+
+service 'nginx' do
+    supports :status => true, :restart => true, :reload => true
+    action   :start
+end

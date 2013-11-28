@@ -1,1 +1,9 @@
-default[:passenger_nginx][:auto_upgrade] = true
+default['passenger_nginx']['auto_upgrade'] = true
+default['passenger_nginx']['ruby'] = '/usr/bin/ruby'
+default['passenger_nginx']['spawn_method'] = 'smart-lv2'
+default['passenger_nginx']['buffer_response'] = 'on'
+default['passenger_nginx']['max_pool_size'] = 6
+default['passenger_nginx']['min_instances'] = 1
+default['passenger_nginx']['max_instances_per_app'] = 0
+default['passenger_nginx']['pool_idle_time'] = 300
+default['passenger_nginx']['max_requests'] = 0

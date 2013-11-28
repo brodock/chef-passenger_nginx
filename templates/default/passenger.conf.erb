@@ -1,0 +1,11 @@
+passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
+passenger_ruby <%= node['passenger_nginx']['ruby'] %>;
+
+# Fine Tunning
+passenger_max_pool_size <%= node['passenger_nginx']['max_pool_size'] %>;
+passenger_spawn_method <%= node['passenger_nginx']['spawn_method'] %>;
+passenger_buffer_response <%= node['passenger_nginx']['buffer_response'] %>;
+passenger_min_instances <%= node['passenger_nginx']['min_instances'] %>;
+passenger_max_instances_per_app <%= node['passenger_nginx']['max_instances_per_app'] %>;
+passenger_pool_idle_time <%= node['passenger_nginx']['pool_idle_time'] %>;
+passenger_max_requests <%= node['passenger_nginx']['max_requests'] %>;
