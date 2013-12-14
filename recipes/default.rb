@@ -6,6 +6,8 @@
 #
 include_recipe 'apt'
 
+default_action = node[:passenger_nginx][:auto_upgrade] ? :upgrade : :install
+
 # this is a dependency to phusion's passenger repository
 package 'apt-transport-https' do
     action :install
@@ -21,11 +23,15 @@ apt_repository 'passenger' do
 end
 
 package 'nginx-full' do
-    action :upgrade if node[:passenger_nginx][:auto_upgrade]
+    action default_action
 end
 
 package 'passenger' do
-    action :upgrade if node[:passenger_nginx][:auto_upgrade]
+    action default_action
+end
+
+gem_package 'passenger' do
+    action default_action
 end
 
 template "/etc/nginx/conf.d/passenger.conf" do
