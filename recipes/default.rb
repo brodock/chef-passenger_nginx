@@ -39,7 +39,7 @@ template "/etc/nginx/conf.d/passenger.conf" do
     mode 0644
     owner "root"
     group "root"
-    notifies :reload, 'service[nginx]'
+    notifies :restart, 'service[nginx]'
 end
 
 service 'nginx' do
