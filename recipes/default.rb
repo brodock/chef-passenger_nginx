@@ -28,10 +28,7 @@ end
 
 package 'passenger' do
     action default_action
-end
-
-gem_package 'passenger' do
-    action default_action
+    notifies :restart, 'service[nginx]'
 end
 
 template "/etc/nginx/conf.d/passenger.conf" do
